@@ -88,6 +88,11 @@ input:-webkit-autofill:active {
     font-weight: 700;
 }
 
+.formCard .form-box button:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
 .formCard .form-box .register-link {
     font-size: 16px;
     text-align: center;
