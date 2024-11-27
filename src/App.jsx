@@ -1,10 +1,10 @@
-import Search from "./components/Search";
-import Nav from "./components/Nav";
+import Home from "./pages/Home";
 const App = () => {
-  return <div>
-    <Search/>
-    <Nav/>
-  </div>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 export default App;
