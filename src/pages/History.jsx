@@ -1,10 +1,9 @@
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from "../auth/context/AuthContext"
 import { useNavigate } from 'react-router-dom';
 
 export default function History() {
 //   const { user, logout } = useAuth();
-  const navigate = useNavigate();
-
+// const navigate = useNavigate();
 //   async function handleLogout() {
 //     try {
 //       await logout();
@@ -13,7 +12,6 @@ export default function History() {
 //       console.error('Failed to logout');
 //     }
 //   }
-
   return (
     <div>
       <h1>History</h1> {/* this is temporary */}
