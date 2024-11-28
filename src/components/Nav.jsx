@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import History from "../pages/History";
-import Login from "../pages/Login";
 const Nav = () => {
   return (
     <div>
