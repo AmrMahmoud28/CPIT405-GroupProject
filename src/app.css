@@ -30,11 +30,40 @@ input:-webkit-autofill:active {
     /* Temporary color */
     border-radius: 10px;
     color: white;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.2s ease;
+}
+
+.formCard.active{
+    height: 520px;
 }
 
 .formCard .form-box {
     width: 100%;
     padding: 40px;
+}
+
+.formCard .form-box.login{
+    transition: translate 0.18s ease;
+    translate: 0;
+}
+
+.formCard.active .form-box.login{
+    transition: none;
+    translate: -400px;
+}
+
+.formCard .form-box.register{
+    position: absolute;
+    transition: none;
+    translate: 400px;
+}
+
+.formCard.active .form-box.register{
+    transition: translate 0.18s ease;
+    translate: 0;
 }
 
 .formCard .form-box h1 {

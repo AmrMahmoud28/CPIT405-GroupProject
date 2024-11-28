@@ -2,9 +2,9 @@ import React from "react";
 import InputBox from "./InputBox";
 import { FaUser, FaLock } from "react-icons/fa";
 
-const LoginForm = () => {
+const LoginForm = ({handleLinkClick}) => {
   return (
-    <div className="form-box">
+    <div className="form-box login">
       <form action="">
         <h1>Login</h1>
         <InputBox
@@ -24,7 +24,7 @@ const LoginForm = () => {
         <button type="submit">Login</button>
 
         <div className="register-link">
-          <p>Don't have an account? <span>Sign Up</span></p>
+          <p>Don't have an account? <span onClick={handleLinkClick}>Sign Up</span></p>
         </div>
       </form>
     </div>
