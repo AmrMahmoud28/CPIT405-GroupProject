@@ -181,6 +181,11 @@ a{
     backdrop-filter: blur(10px);
 }
 
+.headerLogin{
+    background: transparent;
+    backdrop-filter: blur(15px);
+}
+
 .header .buttons button{
     min-width: 110px;
     height: 40px;
