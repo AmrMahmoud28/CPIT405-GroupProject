@@ -24,7 +24,7 @@ const Nav = () => {
             <Link to="/history">
               <button>History</button>
             </Link>
-            <button onClick={handleLogout}>Logout</button>
+            <button className="logoutButton" onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <Link to="/login">

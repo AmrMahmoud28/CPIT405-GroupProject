@@ -182,6 +182,8 @@ a{
 }
 
 .header .buttons button{
+    min-width: 110px;
+    height: 40px;
     margin-left: 20px;
     background-color: white;
     color: #333;
@@ -196,8 +198,15 @@ a{
     outline: none;
 }
 
+.header .buttons .logoutButton{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
 .header .buttons button:hover{
     background-color: #f1f1f1;
+    color: #333;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
