@@ -7,6 +7,7 @@ import "./app.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./auth/context/AuthContext";
 import LoginRedirectionRoute from "./components/LoginRedirectionRoute";
+import Footer from "./components/Footer";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const AppRoutes = () => {
           }
         />
       </Routes>
+      {!hideNavOnPaths.includes(location.pathname) && <Footer />}
     </>
   );
 };
