@@ -13,6 +13,12 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: white !important;
 }
 
+a{
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
 .loginContainer {
     display: flex;
     justify-content: center;
@@ -157,4 +163,48 @@ input:-webkit-autofill:active {
 .formCard .form-box .register-link span:hover {
     text-decoration: underline;
     text-shadow: 1px 1px 1px #555;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #272727;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.header .buttons button{
+    margin-left: 20px;
+    background-color: white;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50px;
+    padding: 9px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+}
+
+.header .buttons button:hover{
+    background-color: #f1f1f1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.main{
+    padding: 100px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
