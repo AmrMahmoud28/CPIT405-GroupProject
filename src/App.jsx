@@ -5,13 +5,21 @@ import History from "./pages/History";
 import "./app.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./auth/context/AuthContext";
+import LoginRedirectionRoute from "./components/LoginRedirectionRoute";
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={
+              <LoginRedirectionRoute>
+                <Login />
+              </LoginRedirectionRoute>
+            }
+          />
           <Route
             path="/history"
             element={
