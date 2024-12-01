@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Result = ({payload}) => {
+  console.log(JSON.stringify(payload))
   return (
     <div>
       <p>{

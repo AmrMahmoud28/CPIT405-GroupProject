@@ -1,16 +1,46 @@
-import Enter from "./Enter"
-import React from "react"
-import { useState } from "react"
+import Enter from "./Enter";
+import React from "react";
+import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
-const Search = () => {
-    const [textInput, setTextInput] = useState("")
-    return (
-        <div className="main">
-            <input type="text" name="" id="" onChange={(e) => setTextInput(e.target.value)} /> { //here we are storing the value of the text input by updating onChange so that every time the user writes somthing the value will be updated    
-            }
-            
-            <Enter textInput={textInput} />
+const Search = ({ setPayload }) => {
+  const [textInput, setTextInput] = useState("");
+
+  const handleEnter = async (e) => {
+    e.preventDefault();
+    if (textInput.trim() === "") {
+      return;
+    }
+    const response = await fetch(
+      `https://world.openfoodfacts.org/api/v0/product/${textInput.trim()}`
+    );
+    const respObj = await response.json();
+    setPayload(respObj);
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      setTextInput(value);
+    }
+  };
+
+  return (
+    <div className="searchContainer">
+      <form className="search" onSubmit={handleEnter}>
+        <input
+          type="search"
+          className="searchInput"
+          placeholder="Type the product's barcode..."
+          value={textInput}
+          onChange={handleInputChange}
+        />
+
+        <div className="searchButton" onClick={handleEnter}>
+          <FaSearch className="searchIcon" />
         </div>
-    )
-}
-export default Search
+      </form>
+    </div>
+  );
+};
+export default Search;
