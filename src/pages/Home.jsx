@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Search from "../components/Search";
+import Result from "../components/Result";
 
 const Home = () => {
+  const [payload,setPayload] = useState(null);
   return (
-    <>
-      <Search />
-    </>
+    <div className="main">
+      <Search setPayload={setPayload}/>
+      {payload && <Result payload={payload} />}
+    </div>
   );
 };
 
