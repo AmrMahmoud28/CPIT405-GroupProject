@@ -1,9 +1,8 @@
-import Enter from "./Enter";
 import React from "react";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-const Search = ({ setPayload }) => {
+const Search = ({payload, setPayload }) => {
   const [textInput, setTextInput] = useState("");
 
   const handleEnter = async (e) => {
@@ -26,7 +25,7 @@ const Search = ({ setPayload }) => {
   };
 
   return (
-    <div className="searchContainer">
+    <div className={`searchContainer${payload? " active" : ""}`}>
       <form className="search" onSubmit={handleEnter}>
         <input
           type="search"

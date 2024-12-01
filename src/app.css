@@ -243,11 +243,13 @@ a {
 }
 
 .main {
-    padding: 100px 10%;
+    padding: 180px 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    flex-direction: column;
+    flex: 1;
 }
 
 .footer {
@@ -293,10 +295,17 @@ a {
 }
 
 .searchContainer {
+    position: absolute;
     margin-inline: 1.5rem;
     display: flex;
     justify-content: center;
     width: 100%;
+    /* margin-bottom: 50px; */
+    transition: transform 0.8s ease;
+}
+
+.searchContainer.active{
+    transform: translateY(calc(-50vh + 190px));
 }
 
 .searchContainer .search {
