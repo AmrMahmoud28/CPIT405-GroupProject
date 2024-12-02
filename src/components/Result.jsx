@@ -16,7 +16,7 @@ const Result = ({ payload }) => {
       : ["No allergens specified"];
 
   return (
-    <div className="cardWrapper">
+    <div className={`cardWrapper${payload ? " active" : ""}`}>
       <div className="content">
         <div className="card">
           <div className="imageContent">
