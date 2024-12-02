@@ -3,8 +3,7 @@ import React from "react";
 const Result = ({ payload }) => {
   console.log(JSON.stringify(payload));
   const productName = payload.product?.product_name || "Unknown Product";
-  const imageUrl =
-    payload.product?.image_url || "https://via.placeholder.com/600";
+  const imageUrl = payload.product?.image_url || "https://via.placeholder.com/600x400";
   const isHalal = true;
 
   const allergensList = payload.product?.allergens_hierarchy || [];
