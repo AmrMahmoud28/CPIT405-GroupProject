@@ -401,6 +401,7 @@ a {
     opacity: 0;
     transform: translateY(50vh);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    
 }
 
 .cardWrapper.active {
@@ -434,19 +435,19 @@ a {
     text-align: center;
 }
 
-.cardWrapper .cardImage {
+/* .cardWrapper .cardImage {
     position: relative;
     height: 150px;
     width: 150px;
     border-radius: 50px;
     background-color: white;
     padding: 3px;
-}
+} */
 
-.cardWrapper .cardImage,
+/* .cardWrapper .cardImage, */
 .cardWrapper .cardImg {
-    height: 100%;
-    width: 100%;
+    height: 400px;
+    width: 600px;
     object-fit: cover;
     border-radius: 50px;
     border: 4px solid #272727;
@@ -467,3 +468,4 @@ a {
 .cardWrapper .cardContent .button:hover {
     background-color: #474747;
 }
+
