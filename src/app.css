@@ -417,6 +417,11 @@ a {
     border-radius: 25px;
     background-color: white;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cardWrapper .card:hover{
+    transform: scale(1.02);
 }
 
 .cardWrapper .imageContent,
@@ -429,10 +434,28 @@ a {
 
 .cardWrapper .imageContent {
     row-gap: 5px;
+    max-width: 100%;
+    padding: 20px;
 }
 
 .cardWrapper .cardContent {
     text-align: center;
+    color: #333;
+    padding: 10px 20px;
+    line-height: 1.6;
+}
+
+.cardWrapper .cardContent .name{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #272727;
+    margin-bottom: 10px;
+}
+
+.cardWrapper .cardContent h2{
+    font-size: 1.6rem;
+    color: #555;
+    margin-bottom: 14px;
 }
 
 /* .cardWrapper .cardImage {
@@ -446,11 +469,15 @@ a {
 
 /* .cardWrapper .cardImage, */
 .cardWrapper .cardImg {
-    height: 400px;
-    width: 600px;
+    height: auto;
+    width: 500px;
+    max-width: 1200px;
+    aspect-ratio: 16 / 9;
     object-fit: fill;
-    border-radius: 50px;
+    border-radius: 20px;
     border: 4px solid #272727;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
 }
 
 .cardWrapper .cardContent .button {
@@ -469,3 +496,23 @@ a {
     background-color: #474747;
 }
 
+.allergens ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.allergens li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.allergens li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #272727;
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
