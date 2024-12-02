@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="main">
       <Search payload={payload} setPayload={setPayload}/>
-      {payload && <Result payload={payload} />}
+      <Result payload={payload} />
     </div>
   );
 };

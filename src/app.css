@@ -400,7 +400,7 @@ a {
     margin-top: 50px;
     opacity: 0;
     transform: translateY(50vh);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: opacity 1s ease, transform 1s ease;
     
 }
 
