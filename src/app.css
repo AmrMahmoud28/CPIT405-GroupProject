@@ -448,7 +448,7 @@ a {
 .cardWrapper .cardImg {
     height: 400px;
     width: 600px;
-    object-fit: cover;
+    object-fit: fill;
     border-radius: 50px;
     border: 4px solid #272727;
 }
