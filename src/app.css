@@ -349,6 +349,11 @@ a {
     display: grid;
     place-items: center;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.searchContainer .searchButton:hover {
+    background-color: #474747;;
 }
 
 .searchContainer .searchIcon {
@@ -386,4 +391,64 @@ a {
     to {
         opacity: 1;
     }
+}
+
+.cardWrapper .content {
+    margin: 0 40px;
+}
+
+.cardWrapper .card {
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cardWrapper .imageContent,
+.cardWrapper .cardContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 14px;
+}
+
+.cardWrapper .imageContent{
+    row-gap: 5px;
+}
+
+.cardWrapper .cardContent{
+    text-align: center;
+}
+
+.cardWrapper .cardImage {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50px;
+    background-color: white;
+    padding: 3px;
+}
+
+.cardWrapper .cardImage,
+.cardWrapper .cardImg {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+    border: 4px solid #272727;
+}
+
+.cardWrapper .cardContent .button{
+    border: none;
+    font-size: 16px;
+    color: white;
+    background-color: #272727;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cardWrapper .cardContent .button:hover{
+    background-color: #474747;
 }
