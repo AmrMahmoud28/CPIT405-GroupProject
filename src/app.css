@@ -245,11 +245,13 @@ a {
 .main {
     padding: 180px 10%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     flex-direction: column;
     flex: 1;
+    overflow: hidden;
+    position: relative;
 }
 
 .footer {
@@ -295,17 +297,18 @@ a {
 }
 
 .searchContainer {
-    position: absolute;
-    margin-inline: 1.5rem;
+    position: relative;
+    /* margin-inline: 1.5rem; */
     display: flex;
     justify-content: center;
     width: 100%;
     /* margin-bottom: 50px; */
+    transform: translateY(25vh);
     transition: transform 0.8s ease;
 }
 
 .searchContainer.active {
-    transform: translateY(calc(-50vh + 190px));
+    transform: translateY(0);
 }
 
 .searchContainer .search {
@@ -353,7 +356,7 @@ a {
 }
 
 .searchContainer .searchButton:hover {
-    background-color: #474747;;
+    background-color: #474747;
 }
 
 .searchContainer .searchIcon {
@@ -393,6 +396,18 @@ a {
     }
 }
 
+.cardWrapper {
+    margin-top: 50px;
+    opacity: 0;
+    transform: translateY(50vh);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cardWrapper.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .cardWrapper .content {
     margin: 0 40px;
 }
@@ -411,11 +426,11 @@ a {
     padding: 10px 14px;
 }
 
-.cardWrapper .imageContent{
+.cardWrapper .imageContent {
     row-gap: 5px;
 }
 
-.cardWrapper .cardContent{
+.cardWrapper .cardContent {
     text-align: center;
 }
 
@@ -437,7 +452,7 @@ a {
     border: 4px solid #272727;
 }
 
-.cardWrapper .cardContent .button{
+.cardWrapper .cardContent .button {
     border: none;
     font-size: 16px;
     color: white;
@@ -449,6 +464,6 @@ a {
     transition: all 0.3s ease;
 }
 
-.cardWrapper .cardContent .button:hover{
+.cardWrapper .cardContent .button:hover {
     background-color: #474747;
 }
