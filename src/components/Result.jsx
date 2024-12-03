@@ -10,6 +10,33 @@ const Result = ({ payload }) => {
   const [isImageCovered, setIsImageCovered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const haramMapping = [
+    'pork', 'gelatin', 'alcohol', 'carmine', 'lard', 'ham', 'bacon', 'chorizo', 'blood', 
+    'carrion', 'dogmeat', 'catmeat', 'pork meat', 'gelatin products',  
+    'alcohol consumption', 'carmine dye', 'lard fat', 'ham meat', 'bacon strips', 'chorizo sausage', 
+    'blood sausage', 'dead meat', 'seafood intoxication', 'dog meat', 'cat meat',  
+    'alcohol-based food', 'non-halal meat', 'haram_food ', 'haram', 'non-halal'
+]
+function getHalalOrHaram(data) {
+  if (data && data?.status !== 0 && data?.product?.ingredients) {
+    let halalBoolean = true; 
+
+    data.product.ingredients.forEach((ingredient) => {
+      const ingredientName = ingredient.id.split(':').pop().toLowerCase(); // remove er:
+
+      if(haramMapping.includes(ingredientName)){
+        halalBoolean=false
+      }
+
+    });
+
+    return halalBoolean
+  } else {
+    
+    return "Missing ingredients !"
+  }
+}
+
   const allergenMapping = {
     milk: [
       'milk', 'lactose', 'skimmed milk powder', 'milk fat', 'whey powder', 'cheese', 'butter', 'cream', 'yogurt',
