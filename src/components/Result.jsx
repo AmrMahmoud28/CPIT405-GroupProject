@@ -27,7 +27,7 @@ const Result = ({ payload }) => {
 
           <div className="cardContent">
             <h1 className="name">{productName}</h1>
-            <h2 className="halal">{`${isHalal ? "Halal" : "Haram"}`}</h2>
+            <h2 className={`halal${isHalal ? "" : " not"}`}>{`${isHalal ? "Halal" : "Haram"}`}</h2>
             <div className="allergens">
               <h2>Allergens:</h2>
               <ul>
