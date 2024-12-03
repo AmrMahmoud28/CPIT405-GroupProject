@@ -1,8 +1,8 @@
 # CPIT 405 Group Project 
 ### Group Members 
-- [Amr Mahmoud](https://github.com/AmrMahmoud28)
-- [Hamza Sebaih](https://github.com/Senku150)
-- [Saher Marsi](https://github.com/SaherMarsi) Contribution: Authentication, Firebase Database Management, Creation of User, Creation of User's History Data, Reading and Display User's History Data.
+- [Amr Mahmoud](https://github.com/AmrMahmoud28)'s Contribution:
+- [Hamza Sebaih](https://github.com/Senku150)'s Contribution:
+- [Saher Marsi](https://github.com/SaherMarsi)'s Contribution: Authentication, Firebase Database Management, Creation of User, Creation of User's History Data, Reading and Display User's History Data.
 # DESCRIPTION
 The main problem is most people tend to eat specific products without reading the
 label where important information is presented, unknowingly consume undesired
