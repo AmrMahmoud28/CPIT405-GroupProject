@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { ref, set } from "firebase/database";
+import { getDatabase } from "firebase/database";
+import { useAuth } from "../auth/context/AuthContext";
+// import app from "../auth/firebase";
 
 const Result = ({ payload }) => {
+  const { user } = useAuth();
+
   const [isImageCovered, setIsImageCovered] = useState(false);
 
   const allergenMapping = {
@@ -89,12 +95,24 @@ const Result = ({ payload }) => {
     payload?.product?.image_url || "https://via.placeholder.com/600";
   const isHalal = true;
 
+  if (payload || payload?.status !== 0) {
+    const db = getDatabase(); //connection to the db
+    const newRef = ref(db, 'history/' + user.uid + "/" + payload.code); //reference to the db path, to store data in the firebase.
+    const historyData = { //
+      email: user.email,
+      productCode: payload?.code,
+      product: productName,
+      img: imageUrl
+    };
+    set(newRef, historyData).then(() => { console.log("User history data saved successfully!"); }).catch((error) => { console.error("Error saving user history data:", error); });
+  }
+
   const allergensList = payload?.product?.allergens_hierarchy || [];
   const formattedAllergens =
     allergensList.length > 0
       ? allergensList.map((allergen) =>
-          allergen.replace("en:", "").replace(/_/g, " ").toUpperCase()
-        )
+        allergen.replace("en:", "").replace(/_/g, " ").toUpperCase()
+      )
       : ["No allergens listed"];
 
   return (
@@ -124,9 +142,8 @@ const Result = ({ payload }) => {
 
               <div className="cardContent">
                 <h1 className="name">{productName}</h1>
-                <h2 className={`halal${isHalal ? "" : " not"}`}>{`${
-                  isHalal ? "Halal" : "Haram"
-                }`}</h2>
+                <h2 className={`halal${isHalal ? "" : " not"}`}>{`${isHalal ? "Halal" : "Haram"
+                  }`}</h2>
                 <div className="allergens">
                   <h2>Allergens:</h2>
                   <ul>

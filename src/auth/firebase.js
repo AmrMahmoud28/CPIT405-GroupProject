@@ -8,6 +8,7 @@ import { getAuth } from 'firebase/auth';
 const firebaseConfig = {
   apiKey: "AIzaSyCWbQRGP-730J6SoJIg8B8DLP2T1K8ToSo",
   authDomain: "cpit405-groupproject.firebaseapp.com",
+  databaseURL: "https://cpit405-groupproject-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "cpit405-groupproject",
   storageBucket: "cpit405-groupproject.firebasestorage.app",
   messagingSenderId: "689136199596",
