@@ -21,7 +21,23 @@ const Result = ({ payload }) => {
     Gluten: ['Wheat', 'Barley', 'Rye', 'Spelt', 'Triticale', 'Semolina'],
     TreeNuts: ['Chestnuts', 'Beechnuts', 'Coconut', 'Shea Nuts']
 };
+function getProductAllergens(data) {
+  const allergensFound = new Set(); // Use a Set to avoid duplicates
 
+  data.product.ingredients.forEach((ingredient) => {
+      for (const [allergen, ingredients] of Object.entries(allergenMapping)) {
+          if (ingredients.includes(ingredient.text)) {
+              allergensFound.add(allergen);
+          }
+      }
+  });
+
+  if (allergensFound.size > 0) {
+      console.log(`Allergens found: ${[...allergensFound].join(', ')}`);
+  } else {
+      console.log('No allergens found for this product.');
+  }
+}
 
   console.log(JSON.stringify(payload));
   const productName = payload?.product?.product_name || "Unknown Product";
