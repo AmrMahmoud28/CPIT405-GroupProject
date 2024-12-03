@@ -458,6 +458,14 @@ a {
     margin-bottom: 14px;
 }
 
+.cardWrapper .cardContent .halal{
+    color: #4bc951;
+}
+
+.cardWrapper .cardContent .halal.not{
+    color: #d32f2f;
+}
+
 /* .cardWrapper .cardImage {
     position: relative;
     height: 150px;
