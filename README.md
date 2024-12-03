@@ -15,10 +15,10 @@ E120 is a substance that is considered haram.
 
 Our project aims to solve this particular problem by offering the community access
 to a summary of the food products/items by providing the web application with a barcode
-that can be found on the product. We’ll be using 2 APIs; the first one is OpenFoodFacts API
+that can be found on the product. We’ll be using an API; OpenFoodFacts API
 which provides us with full details about the product by using the user input (barcode), it
 will return a JSON object, afterwards we’ll extract the product’s ingredients, then we’ll send
-it to another API that will analyze and return a readable summary.
+it to another API that will analyze and return a readable summary.-------------------edit here for the second
 
 # INSTRUCTIONS
 A general idea of how we started our project and built it.
@@ -37,4 +37,16 @@ We set up and used the realtime database provided by Firebase. Within our compon
 
 ## API
 ### Open Food Facts API
-The Open Food Facts API enabled us to get information like ingredients and nutritional facts of products. We used the API to build the search component that allow users to search the for specific products and save their history to make healthier food choices. This is also great for users with specific allergies such as peanut allergy and for all muslims who live abroad, this will help navigate through the non-halal/haram products and completely avoid it. 
+The Open Food Facts API enabled us to get information like ingredients and nutritional facts of products. We used the API to build the search component that allow users to search the for specific products and save their history to make healthier food choices. This is also great for users with specific allergies such as peanut allergy and for all muslims who live/traveled abroad, this will help navigate through the non-halal/haram products and completely avoid it. 
+
+## Main Page
+![image](https://github.com/user-attachments/assets/dba99205-ddeb-40fb-810f-0650c78991c5)
+## Login Form
+![image](https://github.com/user-attachments/assets/03b5c7e5-f33f-4d56-8aa1-6296a7dcb6ad)
+## Sign Up Form
+![image](https://github.com/user-attachments/assets/cf0a16c2-fe80-4c80-8194-fd8b4d33204f)
+## Search Result
+![image](https://github.com/user-attachments/assets/8870ec6a-5bba-4190-b6b0-c96e5757d558)
+## History Page
+
+
