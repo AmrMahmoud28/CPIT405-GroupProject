@@ -96,7 +96,7 @@ const Result = ({ payload }) => {
     payload?.product?.image_url || "https://via.placeholder.com/600";
   const isHalal = true;
 
-  if (payload && payload?.status !== 0) {
+  if (payload && payload?.status !== 0 && user) {
     const db = getDatabase(); //connection to the db
     const newRef = ref(db, "history/" + user.uid + "/" + payload?.code); //reference to the db path, to store data in the firebase.
     const historyData = {
