@@ -95,7 +95,7 @@ const Result = ({ payload }) => {
       ? allergensList.map((allergen) =>
           allergen.replace("en:", "").replace(/_/g, " ").toUpperCase()
         )
-      : null;
+      : ["No allergens listed"];
 
   return (
     <div className={`cardWrapper${payload ? " active" : ""}`}>
@@ -108,7 +108,6 @@ const Result = ({ payload }) => {
           ) : (
             <>
               <div className="imageContent">
-                <span className="overlay"></span>
                 <div
                   className="cardImage"
                   onDoubleClick={() => {
