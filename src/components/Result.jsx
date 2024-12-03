@@ -11,86 +11,81 @@ const Result = ({ payload }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const allergenMapping = {
-    Milk: [
-      "Milk",
-      "Lactose",
-      "Skimmed Milk Powder",
-      "Milk Fat",
-      "Whey Powder",
-      "Cheese",
-      "Butter",
-      "Cream",
-      "Yogurt",
+    milk: [
+      'milk', 'lactose', 'skimmed milk powder', 'milk fat', 'whey powder', 'cheese', 'butter', 'cream', 'yogurt',
+      'skimmed-milk-powder', 'whole-milk-powder', 'butterfat', 'milk-solids', 'cream', 
+      'skimmed-cow-s-milk-powder', 'whey-powder', 'milk-fat'
     ],
-    Eggs: ["Eggs", "Egg White Powder", "Egg Yolk", "Albumin", "Lysozyme"],
-    Wheat: [
-      "Wheat",
-      "Wheat Flour",
-      "Whole Wheat Flour",
-      "Barley",
-      "Rye",
-      "Oats",
-      "Triticale",
-      "Spelt",
+    eggs: ['eggs', 'egg white powder', 'egg yolk', 'albumin', 'lysozyme'],
+    wheat: [
+      'wheat', 'wheat flour', 'whole wheat flour', 'barley', 'rye', 'oats', 'triticale', 'spelt', 'barley-malt-extract', 
+      'gluten-from-wheat', 'wheat-rour'
     ],
-    Soy: ["Soy", "Soy Lecithin", "Soy Flour", "Soy Protein", "Edamame", "Tofu"],
-    Nuts: [
-      "Almonds",
-      "Hazelnuts",
-      "Cashews",
-      "Walnuts",
-      "Nut Oils",
-      "Nut Butters",
-      "Pecans",
-      "Macadamia Nuts",
-      "Brazil Nuts",
-      "Pine Nuts",
+    soy: ['soy', 'soy lecithin', 'soy flour', 'soy protein', 'edamame', 'tofu', 'soya-lecithin', 'sunflower-lecithin'],
+    nuts: [
+      'almonds', 'hazelnuts', 'cashews', 'walnuts', 'nut oils', 'nut butters', 'pecans', 'macadamia nuts',
+      'brazil nuts', 'pine nuts', 'hazelnut', 'may-contain-soy-et-nuts', 'shea'
     ],
-    Peanuts: ["Peanuts", "Peanut Oil", "Groundnuts", "Arachis Oil"],
-    Fish: [
-      "Fish",
-      "Fish Oil",
-      "Anchovy Extract",
-      "Cod",
-      "Tuna",
-      "Salmon",
-      "Haddock",
+    peanuts: ['peanuts', 'peanut oil', 'groundnuts', 'arachis oil'],
+    fish: ['fish', 'fish oil', 'anchovy extract', 'cod', 'tuna', 'salmon', 'haddock'],
+    shellfish: ['shrimp', 'crab', 'lobster', 'scallops', 'clams', 'mussels'],
+    sesame: ['sesame seeds', 'sesame oil', 'tahini'],
+    mustard: ['mustard seeds', 'mustard powder', 'prepared mustard'],
+    celery: ['celery', 'celery root', 'celery salt', 'celeriac'],
+    lupin: ['lupin flour', 'lupin seeds', 'lupini beans'],
+    sulfites: ['sodium bisulfite', 'sulfur dioxide', 'sulfites', 'potassium metabisulfite'],
+    mollusks: ['octopus', 'squid', 'snails', 'clams', 'oysters'],
+    corn: ['corn', 'corn starch', 'corn syrup', 'popcorn', 'masa flour'],
+    gluten: ['wheat', 'barley', 'rye', 'spelt', 'triticale', 'semolina', 'barley-malt-extract', 'gluten-from-wheat'],
+    treenuts: ['chestnuts', 'beechnuts', 'coconut', 'shea nuts', 'coconut'],
+    cocoa: [
+      'cocoa-butter', 'cocoa-paste', 'fat-reduced-cocoa', 'chocolate', 'cocoa-solids', 
+      'cocoa-mass', 'cocoa-powder'
     ],
-    Shellfish: ["Shrimp", "Crab", "Lobster", "Scallops", "Clams", "Mussels"],
-    Sesame: ["Sesame Seeds", "Sesame Oil", "Tahini"],
-    Mustard: ["Mustard Seeds", "Mustard Powder", "Prepared Mustard"],
-    Celery: ["Celery", "Celery Root", "Celery Salt", "Celeriac"],
-    Lupin: ["Lupin Flour", "Lupin Seeds", "Lupini Beans"],
-    Sulfites: [
-      "Sodium Bisulfite",
-      "Sulfur Dioxide",
-      "Sulfites",
-      "Potassium Metabisulfite",
+    fruit: [
+      'fruit-juice-blend', 'guava', 'papaya-purees', 'passionfruit', 'apple', 'concentrated-pineapple-juice'
     ],
-    Mollusks: ["Octopus", "Squid", "Snails", "Clams", "Oysters"],
-    Corn: ["Corn", "Corn Starch", "Corn Syrup", "Popcorn", "Masa Flour"],
-    Gluten: ["Wheat", "Barley", "Rye", "Spelt", "Triticale", "Semolina"],
-    TreeNuts: ["Chestnuts", "Beechnuts", "Coconut", "Shea Nuts"],
+    additives: [
+      'vanillin', 'emulsifier', 'e150', 'e330', 'e440a', 'e415', 'natural-flavouring', 'e160ai',
+      'emulsifier-from-plant-drigin', 'raising-agent', 'sodium-bicarbonatal'
+    ],
+    oils: [
+      'palm-oil', 'vegetable-fat', 'palm-kernel-oil', 'non-hydrogenated-vegetable-oils', 
+      'palm-kernel', 'palm'
+    ],
+    salt: ['sea-salt', 'salt', 'fleur-de-sel'],
+    aloe: ['aloe-vera']
   };
+  
+
+
   function getProductAllergens(data) {
-    const allergensFound = new Set(); // Use a Set to avoid duplicates
+    if (data && data?.status !== 0 && data?.product?.ingredients) {
+      const allergensFound = new Set(); // Use a Set to avoid duplicates
 
-    data.product.ingredients.forEach((ingredient) => {
-      for (const [allergen, ingredients] of Object.entries(allergenMapping)) {
-        if (ingredients.includes(ingredient.text)) {
-          allergensFound.add(allergen);
+
+      data.product.ingredients.forEach((ingredient) => {
+        if (ingredient?.id) {
+
+          const ingredientName = ingredient.id.split(':').pop().toLowerCase(); //remove er:
+
+          for (const [allergen, ingredients] of Object.entries(allergenMapping)) { //get the name of the object with it's elemnts
+            if (ingredients.includes(ingredientName)) { //if found add it to the list
+              allergensFound.add(allergen);
+            }
+          }
         }
-      }
-    });
+      });
 
-    if (allergensFound.size > 0) {
-      console.log(`Allergens found: ${[...allergensFound].join(", ")}`);
+      // Return allergens found or an empty set
+      return allergensFound.size > 0 ? allergensFound : new Set();
     } else {
-      console.log("No allergens found for this product.");
+      // Handle invalid input or missing data
+      return new Set();
     }
   }
 
-  console.log(JSON.stringify(payload));
+
   const productName = payload?.product?.product_name || "Unknown Product";
   const imageUrl =
     payload?.product?.image_url || "https://via.placeholder.com/600";
@@ -115,14 +110,9 @@ const Result = ({ payload }) => {
       });
   }
 
-  const allergensList = payload?.product?.allergens_hierarchy || [];
-  const formattedAllergens =
-    allergensList.length > 0
-      ? allergensList.map((allergen) =>
-          allergen.replace("en:", "").replace(/_/g, " ").toUpperCase()
-        )
-      : ["No allergens listed"];
+  const ProductAllergens = Array.from(getProductAllergens(payload));
   const nutriscoreData = payload?.product?.nutriscore_data || null;
+
 
   return (
     <div className={`cardWrapper${payload ? " active" : ""}`}>
@@ -153,16 +143,16 @@ const Result = ({ payload }) => {
 
                   <div className="cardContent">
                     <h1 className="name">{productName}</h1>
-                    <h2 className={`halal${isHalal ? "" : " not"}`}>{`${
-                      isHalal ? "Halal" : "Haram"
-                    }`}</h2>
+                    <h2 className={`halal${isHalal ? "" : " not"}`}>{`${isHalal ? "Halal" : "Haram"
+                      }`}</h2>
                     <div className="allergens">
-                      <h2>Allergens:</h2>
+                      <h2>Might Contain:</h2>
                       <ul>
-                        {formattedAllergens.map((allergen, index) => (
-                          <li key={index}>{allergen}</li>
+                        {ProductAllergens.map((allergen, index) => (
+                          <li key={index}>{allergen.toUpperCase()}</li>
                         ))}
                       </ul>
+
                     </div>
                     <button
                       className="button"
