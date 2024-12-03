@@ -13,12 +13,12 @@ const Result = ({ payload }) => {
   const allergenMapping = {
     milk: [
       'milk', 'lactose', 'skimmed milk powder', 'milk fat', 'whey powder', 'cheese', 'butter', 'cream', 'yogurt',
-      'skimmed-milk-powder', 'whole-milk-powder', 'butterfat', 'milk-solids', 'cream', 
+      'skimmed-milk-powder', 'whole-milk-powder', 'butterfat', 'milk-solids', 'cream',
       'skimmed-cow-s-milk-powder', 'whey-powder', 'milk-fat'
     ],
     eggs: ['eggs', 'egg white powder', 'egg yolk', 'albumin', 'lysozyme'],
     wheat: [
-      'wheat', 'wheat flour', 'whole wheat flour', 'barley', 'rye', 'oats', 'triticale', 'spelt', 'barley-malt-extract', 
+      'wheat', 'wheat flour', 'whole wheat flour', 'barley', 'rye', 'oats', 'triticale', 'spelt', 'barley-malt-extract',
       'gluten-from-wheat', 'wheat-rour'
     ],
     soy: ['soy', 'soy lecithin', 'soy flour', 'soy protein', 'edamame', 'tofu', 'soya-lecithin', 'sunflower-lecithin'],
@@ -39,7 +39,7 @@ const Result = ({ payload }) => {
     gluten: ['wheat', 'barley', 'rye', 'spelt', 'triticale', 'semolina', 'barley-malt-extract', 'gluten-from-wheat'],
     treenuts: ['chestnuts', 'beechnuts', 'coconut', 'shea nuts', 'coconut'],
     cocoa: [
-      'cocoa-butter', 'cocoa-paste', 'fat-reduced-cocoa', 'chocolate', 'cocoa-solids', 
+      'cocoa-butter', 'cocoa-paste', 'fat-reduced-cocoa', 'chocolate', 'cocoa-solids',
       'cocoa-mass', 'cocoa-powder'
     ],
     fruit: [
@@ -50,13 +50,13 @@ const Result = ({ payload }) => {
       'emulsifier-from-plant-drigin', 'raising-agent', 'sodium-bicarbonatal'
     ],
     oils: [
-      'palm-oil', 'vegetable-fat', 'palm-kernel-oil', 'non-hydrogenated-vegetable-oils', 
+      'palm-oil', 'vegetable-fat', 'palm-kernel-oil', 'non-hydrogenated-vegetable-oils',
       'palm-kernel', 'palm'
     ],
     salt: ['sea-salt', 'salt', 'fleur-de-sel'],
     aloe: ['aloe-vera']
   };
-  
+
 
 
   function getProductAllergens(data) {
@@ -146,12 +146,20 @@ const Result = ({ payload }) => {
                     <h2 className={`halal${isHalal ? "" : " not"}`}>{`${isHalal ? "Halal" : "Haram"
                       }`}</h2>
                     <div className="allergens">
-                      <h2>Might Contain:</h2>
-                      <ul>
-                        {ProductAllergens.map((allergen, index) => (
-                          <li key={index}>{allergen.toUpperCase()}</li>
-                        ))}
-                      </ul>
+                      {ProductAllergens ? (
+                        <>
+                          <h2>Might Contain:</h2>
+                          <ul>
+                            {ProductAllergens.map((allergen, index) => (
+                              <li key={index}>{allergen.toUpperCase()}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        <p>No allergens information available.</p> 
+                      )}
+
+
 
                     </div>
                     <button
