@@ -1,8 +1,8 @@
 # CPIT 405 Group Project 
 ### Group Members 
-- Amr Mahmoud
-- Hamza Sebaih
-- Saher Marsi
+- [Amr Mahmoud](https://github.com/AmrMahmoud28)
+- [Hamza Sebaih](https://github.com/Senku150)
+- [Saher Marsi](https://github.com/SaherMarsi)
 # DESCRIPTION
 The main problem is most people tend to eat specific products without reading the
 label where important information is presented, unknowingly consume undesired
