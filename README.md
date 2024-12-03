@@ -32,7 +32,7 @@ Firebase offers an efficient and scalable solution for handling these tasks, mak
 - Set up the main app with authentication and protected routes.
   
 ### FIREBASE DATABASE
-We set up and used the realtime database provided by Firebase. Within our components we created 2 functions, one functions creates and stores user's history in the database whenever that user searches a product, however that user must have an account. The other function simply reads and displays that user's history in the history page.
+We set up and used the realtime database provided by Firebase. Within our components we created 2 functions, one function creates and stores user's history in the database whenever that user searches a product, however that user must have an account. The other function simply reads and displays that user's history in the history page.
 
 ## API
 ### Open Food Facts API
