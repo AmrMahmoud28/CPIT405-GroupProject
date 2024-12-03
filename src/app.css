@@ -481,11 +481,16 @@ a {
     width: 500px;
     max-width: 1200px;
     aspect-ratio: 16 / 9;
-    object-fit: fill;
+    object-fit: contain;
     border-radius: 20px;
     border: 4px solid #272727;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
+    cursor: pointer;
+}
+
+.cardWrapper .cardImg.cover{
+    object-fit: cover;
 }
 
 .cardWrapper .cardContent .button {
