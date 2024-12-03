@@ -78,10 +78,10 @@ const Result = ({ payload }) => {
       });
 
       // Return allergens found or an empty set
-      return allergensFound.size > 0 ? allergensFound : new Set();
+      return allergensFound.size > 0 ? allergensFound : new Set().add("No allergens data available");
     } else {
       // Handle invalid input or missing data
-      return new Set();
+      return new Set().add("No allergens data available");;
     }
   }
 
