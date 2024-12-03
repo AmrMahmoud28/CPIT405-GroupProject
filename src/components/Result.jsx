@@ -8,6 +8,7 @@ const Result = ({ payload }) => {
   const { user } = useAuth();
 
   const [isImageCovered, setIsImageCovered] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const allergenMapping = {
     Milk: [
@@ -95,67 +96,113 @@ const Result = ({ payload }) => {
     payload?.product?.image_url || "https://via.placeholder.com/600";
   const isHalal = true;
 
-  if (payload) {
+  if (payload && payload?.status !== 0) {
     const db = getDatabase(); //connection to the db
-    const newRef = ref(db, 'history/' + user.uid + "/" + payload.code); //reference to the db path, to store data in the firebase.
-    const historyData = { //
+    const newRef = ref(db, "history/" + user.uid + "/" + payload?.code); //reference to the db path, to store data in the firebase.
+    const historyData = {
+      //
       email: user.email,
       productCode: payload?.code,
       product: productName,
-      img: imageUrl
+      img: imageUrl,
     };
-    set(newRef, historyData).then(() => { console.log("User history data saved successfully!"); }).catch((error) => { console.error("Error saving user history data:", error); });
+    set(newRef, historyData)
+      .then(() => {
+        console.log("User history data saved successfully!");
+      })
+      .catch((error) => {
+        console.error("Error saving user history data:", error);
+      });
   }
 
   const allergensList = payload?.product?.allergens_hierarchy || [];
   const formattedAllergens =
     allergensList.length > 0
       ? allergensList.map((allergen) =>
-        allergen.replace("en:", "").replace(/_/g, " ").toUpperCase()
-      )
+          allergen.replace("en:", "").replace(/_/g, " ").toUpperCase()
+        )
       : ["No allergens listed"];
+  const nutriscoreData = payload?.product?.nutriscore_data || null;
 
   return (
     <div className={`cardWrapper${payload ? " active" : ""}`}>
       <div className="content">
-        <div className="card">
-          {!payload || payload?.status === 0 ? (
-            <div className="cardContent">
-              <h1 className="name">Product not found</h1>
-            </div>
-          ) : (
-            <>
-              <div className="imageContent">
+        <div className="cardWrapperHover">
+          <div className={`card ${isFlipped ? "flipped" : ""}`}>
+            {!payload || payload?.status === 0 ? (
+              <div className="cardContent">
+                <h1 className="name">Product not found</h1>
+              </div>
+            ) : (
+              <>
+                <div className="frontFace">
+                  <div className="imageContent">
+                    <div
+                      className="cardImage"
+                      onDoubleClick={() => {
+                        setIsImageCovered(!isImageCovered);
+                      }}
+                    >
+                      <img
+                        src={imageUrl}
+                        alt={productName}
+                        className={`cardImg${isImageCovered ? " cover" : ""}`}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="cardContent">
+                    <h1 className="name">{productName}</h1>
+                    <h2 className={`halal${isHalal ? "" : " not"}`}>{`${
+                      isHalal ? "Halal" : "Haram"
+                    }`}</h2>
+                    <div className="allergens">
+                      <h2>Allergens:</h2>
+                      <ul>
+                        {formattedAllergens.map((allergen, index) => (
+                          <li key={index}>{allergen}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <button
+                      className="button"
+                      onClick={() => {
+                        setIsFlipped(true);
+                      }}
+                    >
+                      View Nutrition
+                    </button>
+                  </div>
+                </div>
                 <div
-                  className="cardImage"
-                  onDoubleClick={() => {
-                    setIsImageCovered(!isImageCovered);
+                  className="backFace"
+                  onClick={() => {
+                    setIsFlipped(false);
                   }}
                 >
-                  <img
-                    src={imageUrl}
-                    alt={productName}
-                    className={`cardImg${isImageCovered ? " cover" : ""}`}
-                  />
+                  {nutriscoreData ? (
+                    <div className="nutrition">
+                      <h2>Nutrition Data:</h2>
+                      <ul>
+                        <li>Energy: {nutriscoreData.energy} kJ</li>
+                        <li>Fiber: {nutriscoreData.fiber} g</li>
+                        <li>Proteins: {nutriscoreData.proteins} g</li>
+                        <li>Saturated Fat: {nutriscoreData.saturated_fat} g</li>
+                        <li>Sodium: {nutriscoreData.sodium} mg</li>
+                        <li>Sugars: {nutriscoreData.sugars} g</li>
+                        <li>Score: {nutriscoreData.score}</li>
+                        <li>Grade: {nutriscoreData.grade.toUpperCase()}</li>
+                      </ul>
+                    </div>
+                  ) : (
+                    <div className="nutrition">
+                      <h2>No Nutrition Data Available</h2>
+                    </div>
+                  )}
                 </div>
-              </div>
-
-              <div className="cardContent">
-                <h1 className="name">{productName}</h1>
-                <h2 className={`halal${isHalal ? "" : " not"}`}>{`${isHalal ? "Halal" : "Haram"
-                  }`}</h2>
-                <div className="allergens">
-                  <h2>Allergens:</h2>
-                  <ul>
-                    {formattedAllergens.map((allergen, index) => (
-                      <li key={index}>{allergen}</li>
-                    ))}
-                  </ul>
-                </div>
-                <button className="button">View Nutrition</button>
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
