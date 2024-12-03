@@ -66,12 +66,18 @@ const Result = ({ payload }) => {
   };
 
   function getHalalOrHaram(data) {
-    if (data && data?.status !== 0 && data?.product?.ingredients) {
+    const nutriscoreDataForHarem = data?.product?.nutriments || null;
+    if (data && data?.status !== 0 && (data?.product?.ingredients || !nutriscoreDataForHarem)) {
       let halalBoolean = true;
+      const hasAlcoholKey = Object.keys(nutriscoreDataForHarem || {}).some(key => key.includes('alcohol')); //to check if word alcohol is within nutriscoreData
+      console.log(nutriscoreDataForHarem)
 
+      if (hasAlcoholKey) {
+        halalBoolean = false
+        return halalBoolean
+      }
       data.product.ingredients.forEach((ingredient) => {
         const ingredientName = ingredient.id.split(':').pop().toLowerCase(); // remove er:
-
         if (haramMapping.includes(ingredientName)) {
           halalBoolean = false
         }
@@ -204,7 +210,7 @@ const Result = ({ payload }) => {
                     setIsFlipped(false);
                   }}
                 >
-                  {nutriscoreData ? (
+                  {nutriscoreData && nutriscoreData.length >= 7 ? (
                     <div className="nutrition">
                       <h2>Nutrition Data:</h2>
                       <ul>
