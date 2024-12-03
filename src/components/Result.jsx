@@ -11,31 +11,12 @@ const Result = ({ payload }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const haramMapping = [
-    'pork', 'gelatin', 'alcohol', 'carmine', 'lard', 'ham', 'bacon', 'chorizo', 'blood', 
-    'carrion', 'dogmeat', 'catmeat', 'pork meat', 'gelatin products',  
-    'alcohol consumption', 'carmine dye', 'lard fat', 'ham meat', 'bacon strips', 'chorizo sausage', 
-    'blood sausage', 'dead meat', 'seafood intoxication', 'dog meat', 'cat meat',  
+    'pork', 'gelatin', 'alcohol', 'carmine', 'lard', 'ham', 'bacon', 'chorizo', 'blood',
+    'carrion', 'dogmeat', 'catmeat', 'pork meat', 'gelatin products',
+    'alcohol consumption', 'carmine dye', 'lard fat', 'ham meat', 'bacon strips', 'chorizo sausage',
+    'blood sausage', 'dead meat', 'seafood intoxication', 'dog meat', 'cat meat',
     'alcohol-based food', 'non-halal meat', 'haram_food ', 'haram', 'non-halal'
-]
-function getHalalOrHaram(data) {
-  if (data && data?.status !== 0 && data?.product?.ingredients) {
-    let halalBoolean = true; 
-
-    data.product.ingredients.forEach((ingredient) => {
-      const ingredientName = ingredient.id.split(':').pop().toLowerCase(); // remove er:
-
-      if(haramMapping.includes(ingredientName)){
-        halalBoolean=false
-      }
-
-    });
-
-    return halalBoolean
-  } else {
-    
-    return "Missing ingredients !"
-  }
-}
+  ]
 
   const allergenMapping = {
     milk: [
@@ -84,7 +65,31 @@ function getHalalOrHaram(data) {
     aloe: ['aloe-vera']
   };
 
+  function getHalalOrHaram(data) {
+    const nutriscoreDataForHarem = data?.product?.nutriments || null;
+    if (data && data?.status !== 0 && (data?.product?.ingredients || !nutriscoreDataForHarem)) {
+      let halalBoolean = true;
+      const hasAlcoholKey = Object.keys(nutriscoreDataForHarem || {}).some(key => key.includes('alcohol')); //to check if word alcohol is within nutriscoreData
+      console.log(nutriscoreDataForHarem)
 
+      if (hasAlcoholKey) {
+        halalBoolean = false
+        return halalBoolean
+      }
+      data.product.ingredients.forEach((ingredient) => {
+        const ingredientName = ingredient.id.split(':').pop().toLowerCase(); // remove er:
+        if (haramMapping.includes(ingredientName)) {
+          halalBoolean = false
+        }
+
+      });
+
+      return halalBoolean
+    } else {
+
+      return "Missing ingredients"
+    }
+  }
 
   function getProductAllergens(data) {
     if (data && data?.status !== 0 && data?.product?.ingredients) {
@@ -116,7 +121,7 @@ function getHalalOrHaram(data) {
   const productName = payload?.product?.product_name || "Unknown Product";
   const imageUrl =
     payload?.product?.image_url || "https://via.placeholder.com/600";
-  const isHalal = true;
+  const isHalal = getHalalOrHaram(payload);
 
   if (payload && payload?.status !== 0 && user) {
     const db = getDatabase(); //connection to the db
@@ -183,7 +188,7 @@ function getHalalOrHaram(data) {
                           </ul>
                         </>
                       ) : (
-                        <p>No allergens information available.</p> 
+                        <p>No allergens information available.</p>
                       )}
 
 
@@ -205,7 +210,7 @@ function getHalalOrHaram(data) {
                     setIsFlipped(false);
                   }}
                 >
-                  {nutriscoreData ? (
+                  {nutriscoreData && nutriscoreData.length >= 7 ? (
                     <div className="nutrition">
                       <h2>Nutrition Data:</h2>
                       <ul>
