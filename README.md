@@ -1,7 +1,7 @@
 # CPIT 405 Group Project 
 ### Group Members 
 - [Amr Mahmoud](https://github.com/AmrMahmoud28)'s Contribution: Structuring, designing, UI interaction, handling user events, organizing React components, managing props and state management, navigation route creation.
-- [Hamza Sebaih](https://github.com/Senku150)'s Contribution:
+- [Hamza Sebaih](https://github.com/Senku150)'s Contribution: API Fetching with async/await, Handling Allergen List Logic, Handling Halal or Harem Logic  
 - [Saher Marsi](https://github.com/SaherMarsi)'s Contribution: Authentication, Firebase Database Management, Creation of User, Creation of User's History Data, Reading and Display User's History Data.
 # DESCRIPTION
 The main problem is most people tend to eat specific products without reading the
