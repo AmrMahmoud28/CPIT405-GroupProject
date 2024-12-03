@@ -37,4 +37,6 @@ Firebase offers an efficient and scalable solution for handling these tasks, mak
 We set up and used the realtime database provided by Firebase. Within our components we created 2 functions, one functions creates and stores user's history in the database whenever that user searches a product, however that user must have an account. The other function simply reads and displays that user's history in the history page.
 ![image](https://github.com/user-attachments/assets/cc65c68f-9c73-46e5-8818-a1d33ca9c9a5)
 
-
+## API
+### Open Food Facts API
+The Open Food Facts API enabled us to get information like ingredients and nutritional facts of products. We used the API to build the search component that allow users to search the for specific products and save their history to make healthier food choices. This is also great for users with specific allergies such as peanut allergy and for all muslims who live abroad, this will help navigate through the non-halal/haram products and completely avoid it. 
