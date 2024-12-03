@@ -100,11 +100,11 @@ const Result = ({ payload }) => {
     const db = getDatabase(); //connection to the db
     const newRef = ref(db, "history/" + user.uid + "/" + payload?.code); //reference to the db path, to store data in the firebase.
     const historyData = {
-      //
       email: user.email,
       productCode: payload?.code,
       product: productName,
       img: imageUrl,
+      halal: isHalal
     };
     set(newRef, historyData)
       .then(() => {
