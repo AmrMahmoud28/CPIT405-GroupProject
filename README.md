@@ -27,8 +27,6 @@ When it comes to authentication and securely storing user information, such as u
 Firebase offers an efficient and scalable solution for handling these tasks, making it easier to develop while ensuring data security and real-time synchronization!
 ### FIREBASE AUTHENTICATION
 - We enabled email/password authentication method in Firebase, and created a Firebase config file.
-(Note: we used a database, so we have one extra line called databaseURL)
-![image](https://github.com/user-attachments/assets/33a89bcf-177f-4b3a-aa56-29f22cec1b9c)
 - Afterwards we also created a contexts directory which has an authentication context file.
 - Created a custom component that wraps the protected routes called ProtectedRoute.
 - Created a login and register form components which we used the authentication context in.
