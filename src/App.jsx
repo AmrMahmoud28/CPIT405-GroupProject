@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, HashRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import History from "./pages/History";
@@ -43,11 +43,11 @@ const AppRoutes = () => {
 };
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
