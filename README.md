@@ -31,9 +31,9 @@ Firebase offers an efficient and scalable solution for handling these tasks, mak
 - Created a custom component that wraps the protected routes called ProtectedRoute.
 - Created a login and register form components which we used the authentication context in.
 - Set up the main app with authentication and protected routes.
+  
 ### FIREBASE DATABASE
 We set up and used the realtime database provided by Firebase. Within our components we created 2 functions, one functions creates and stores user's history in the database whenever that user searches a product, however that user must have an account. The other function simply reads and displays that user's history in the history page.
-![image](https://github.com/user-attachments/assets/cc65c68f-9c73-46e5-8818-a1d33ca9c9a5)
 
 ## API
 ### Open Food Facts API
