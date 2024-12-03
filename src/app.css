@@ -402,7 +402,7 @@ a {
     transform: translateY(50vh);
     transition: opacity 1s ease, transform 1s ease;
     perspective: 1000px;
-    
+
 }
 
 .cardWrapper.active {
@@ -426,11 +426,11 @@ a {
     transform: rotateY(180deg);
 }
 
-.cardWrapper .cardWrapperHover{
+.cardWrapper .cardWrapperHover {
     transition: transform 0.3s ease;
 }
 
-.cardWrapper .cardWrapperHover:hover{
+.cardWrapper .cardWrapperHover:hover {
     transform: scale(1.02);
 }
 
@@ -458,6 +458,10 @@ a {
     backface-visibility: hidden;
 }
 
+.card.historyCursor {
+    cursor: pointer;
+}
+
 .cardWrapper .card.flipped .backFace {
     z-index: 3;
 }
@@ -483,24 +487,24 @@ a {
     line-height: 1.6;
 }
 
-.cardWrapper .cardContent .name{
+.cardWrapper .cardContent .name {
     font-size: 1.8rem;
     font-weight: bold;
     color: #272727;
     margin-bottom: 10px;
 }
 
-.cardWrapper .cardContent h2{
+.cardWrapper .cardContent h2 {
     font-size: 1.6rem;
     color: #555;
     margin-bottom: 14px;
 }
 
-.cardWrapper .cardContent .halal{
+.cardWrapper .cardContent .halal {
     color: #4bc951;
 }
 
-.cardWrapper .cardContent .halal.not{
+.cardWrapper .cardContent .halal.not {
     color: #d32f2f;
 }
 
@@ -527,7 +531,7 @@ a {
     cursor: pointer;
 }
 
-.cardWrapper .cardImg.cover{
+.cardWrapper .cardImg.cover {
     object-fit: cover;
 }
 
@@ -571,29 +575,54 @@ a {
 .nutrition {
     margin-top: 20px;
     text-align: left;
-  }
-  
-  .nutrition h2 {
+}
+
+.nutrition h2 {
     font-size: 2rem;
     margin-bottom: 10px;
     color: white;
-  }
-  
-  .nutrition ul {
+}
+
+.nutrition ul {
     list-style-type: none;
     padding-left: 0;
-  }
-  
-  .nutrition li {
+}
+
+.nutrition li {
     margin-bottom: 8px;
     line-height: 1.6;
     color: #f1f1f1;
     font-size: 1.4rem;
-  }
-  
-  .nutrition li::before {
+}
+
+.nutrition li::before {
     content: "•";
     color: white;
     font-size: 1.4rem;
     margin-right: 8px;
-  }
+}
+
+.historyGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.historyGrid>div {
+    flex: 1 1 calc(25% - 20px);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .history-grid>div {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .history-grid>div {
+        flex: 1 1 100%;
+    }
+}
